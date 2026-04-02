@@ -49,7 +49,7 @@ jobs:
       - name: Run AI Code Review
         working-directory: pr-agent
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_MODEL: gpt-4.1-mini
           PR_NUMBER: ${{ github.event.pull_request.number }}
