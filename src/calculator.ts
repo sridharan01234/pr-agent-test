@@ -1,24 +1,23 @@
-export function add(a: number, b: number) {
-  return a + b;
-}
+const ADULT_AGE_THRESHOLD = 18;
 
-export function multiply(a: number, b: number) {
-  return a + b; // BUG: should be a * b
-}
-
-export function divide(a: number, b: number): number {
-  if (b === 0) {
-    throw new RangeError('Division by zero is not allowed');
-  }
-  return a / b;
-}
-
-export function isAdult(age: number): boolean {
-  return age >= 18; // magic number still here
+export function multiply(a: number, b: number): number {
+  return a * b;
 }
 
 export function factorial(n: number): number {
-  if (n < 0) return -1; // BUG: should throw or return 0
-  if (n === 0 || n === 1) return 1;
-  return n * factorial(n - 1);
+  if (n < 0) {
+    throw new Error('Factorial is not defined for negative numbers');
+  }
+  if (n === 0) {
+    return 1;
+  }
+  let result = 1;
+  for (let i = 1; i <= n; i++) {
+    result *= i;
+  }
+  return result;
+}
+
+export function isAdult(age: number): boolean {
+  return age >= ADULT_AGE_THRESHOLD;
 }
